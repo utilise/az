@@ -13,4 +13,9 @@ describe('az', function() {
     expect(a.sort(az('val'))).to.be.eql([{}, {}, {}, {}, { val: 1 }, { val: 2 }, { val: 2 }, { val: 3 }])
   })
 
+  it('should sort by string property', function() {
+    var a = [{}, { val: 'b' }, {}, { val: 'c' }, {}, { val: 'a' }, {}, { val: 'b' }]
+    expect(a.sort(az('val'))).to.be.eql([{}, {}, {}, {}, { val: 'a' }, { val: 'b' }, { val: 'b' }, { val: 'c' }])
+  })
+
 })
