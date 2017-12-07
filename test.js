@@ -42,5 +42,28 @@ describe('az', function() {
     }
   })
 
+  it('should accept multiple keys', function() {
+    var a = [
+      { name: 'B', ip: '1' }
+    , { name: 'C', ip: 'Y' }
+    , { name: 'C', ip: 'X' }
+    , { name: 'A', ip: '1' }
+    , { name: 'A', ip: '2' }
+    , { name: 'B', ip: '2' }
+    ]
+
+    expect(a.sort(az('name', 'ip'))).to.be.eql([
+      { name: 'A', ip: '1' }
+    , { name: 'A', ip: '2' }
+    , { name: 'B', ip: '1' }
+    , { name: 'B', ip: '2' }
+    , { name: 'C', ip: 'X' }
+    , { name: 'C', ip: 'Y' }
+    ])
+
+    function ccy(d) {
+      return d.base + d.quote
+    }
+  })
 
 })
